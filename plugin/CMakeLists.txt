@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.22)
-
 # Version is needed by JUCE.
-project(AudioPlugin VERSION 0.1.0)
-
+project(YourPluginName VERSION 0.1.0)
 # Adding a directory with the library/application name as a subfolder of the
 # include folder is a good practice. It helps avoid name clashes later on.
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/YourPluginName")
-
 # Adds a plugin target (that's basically what the Projucer does).
+
 juce_add_plugin(${PROJECT_NAME}
     COMPANY_NAME Setlik # change this
     IS_SYNTH FALSE # may change this
@@ -34,6 +32,7 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+
 # Links to all necessary dependencies. The present ones are recommended by JUCE.
 # If you use one of the additional modules, like the DSP module, you need to specify it here.
 target_link_libraries(${PROJECT_NAME}
@@ -45,6 +44,7 @@ target_link_libraries(${PROJECT_NAME}
         juce::juce_recommended_warning_flags
 )
 
+
 # These definitions are recommended by JUCE.
 target_compile_definitions(${PROJECT_NAME}
     PUBLIC
@@ -52,7 +52,6 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
-
 # Enables all warnings and treats warnings as errors.
 # This needs to be set up only for your projects, not 3rd party
 if (MSVC)
@@ -63,3 +62,4 @@ endif()
 
 # In Visual Studio this command provides a nice grouping of source files in "filters".
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/..)
+
