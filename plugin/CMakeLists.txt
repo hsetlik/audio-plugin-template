@@ -15,13 +15,18 @@ juce_add_plugin(${PROJECT_NAME}
     PLUGIN_CODE EXPL # change this
     FORMATS Standalone VST3  AU # may change this
     PRODUCT_NAME "YourPluginName" # change this
+    COPY_PLUGIN_AFTER_BUILD TRUE 
 )
 
 # Sets the source files of the plugin project.
 target_sources(${PROJECT_NAME}
     PRIVATE
+        source/Identifiers.cpp
+        source/Common.cpp
         source/PluginEditor.cpp
         source/PluginProcessor.cpp
+        ${INCLUDE_DIR}/Identifiers.h
+        ${INCLUDE_DIR}/Common.h
         ${INCLUDE_DIR}/PluginEditor.h
         ${INCLUDE_DIR}/PluginProcessor.h
 )
@@ -42,6 +47,7 @@ target_link_libraries(${PROJECT_NAME}
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
+        juce::juce_dsp
 )
 
 
