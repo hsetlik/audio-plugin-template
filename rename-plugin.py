@@ -18,7 +18,7 @@ def cmake_get_project_name(path_name):
 def replace_string_in_file(path, old, new):
     f_read = open(path, "r")
     lines = f_read.readlines()
-    print(f"Read {len(lines)} lines from file '{path}'")
+#    print(f"Read {len(lines)} lines from file '{path}'")
     f_read.close()
     f_write = open(path, "w")
     linesWritten = 0
@@ -27,7 +27,7 @@ def replace_string_in_file(path, old, new):
         linesWritten += 1
 
     f_write.close()
-    print(f"Wrote {linesWritten} lines to file '{path}'")
+    #print(f"Wrote {linesWritten} lines to file '{path}'")
 
 #========================================================
 parser = argparse.ArgumentParser(description="Provide your plugin's new name")
@@ -55,6 +55,8 @@ replace_string_in_file(new_inc_dir + "/PluginProcessor.h", prev_name, args.new_n
 print("Updating source files")
 replace_string_in_file("plugin/source/PluginEditor.cpp", prev_name, args.new_name)
 replace_string_in_file("plugin/source/PluginProcessor.cpp", prev_name, args.new_name)
+replace_string_in_file("plugin/source/Common.cpp", prev_name, args.new_name)
+replace_string_in_file("plugin/source/Identifiers.cpp", prev_name, args.new_name)
 print("Updating test files")
 replace_string_in_file("test/source/AudioProcessorTest.cpp", prev_name, args.new_name)
 print("Name change finished!")
